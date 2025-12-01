@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Hero: React.FC = () => {
   const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+  // y1 was used for the student block, removed from usage below.
   const y2 = useTransform(scrollY, [0, 500], [0, -150]);
 
   // Line configuration for the background
@@ -107,13 +107,13 @@ const Hero: React.FC = () => {
           </motion.div>
 
           <motion.div 
-            style={{ y: y1 }}
+            // Removed parallax y1
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
             className="flex flex-col items-center gap-2 mt-8 md:mt-12"
           >
-            <p className="text-xl md:text-3xl font-medium text-meren-dark/80 lowercase">
+            <p className="text-xl md:text-3xl font-medium text-meren-dark/80 uppercase">
               для студентов
             </p>
             <motion.div 

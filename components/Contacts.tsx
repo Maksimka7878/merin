@@ -68,17 +68,15 @@ const Contacts: React.FC = () => {
             className="lg:col-span-3 h-[400px] lg:h-auto rounded-3xl overflow-hidden shadow-lg border border-gray-100 relative"
           >
             <iframe
-              title="Meren Coffee Map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1999.645512247264!2d30.37324861609627!3d59.92873898187265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x469631a20c327599%3A0x6b4c9b9a67676767!2sTelezhnaya%20Ulitsa%2C%2032%2C%20Sankt-Peterburg%2C%20191167!5e0!3m2!1sen!2sru!4v1700000000000!5m2!1sen!2sru"
+              title="Meren Coffee Yandex Map"
+              src="https://yandex.ru/map-widget/v1/?text=Meren+Coffee+Тележная+32&z=17"
               width="100%"
               height="100%"
-              style={{ border: 0, filter: 'grayscale(1) contrast(1.2)' }}
+              style={{ border: 0, filter: 'grayscale(1)' }}
               allowFullScreen={true}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
              <div className="absolute bottom-4 left-4 bg-white px-4 py-2 rounded-lg shadow-md text-sm font-bold text-meren-dark pointer-events-none">
-                Тележная 32
+                Meren Coffee
              </div>
           </motion.div>
           

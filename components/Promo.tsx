@@ -5,7 +5,32 @@ import { Star } from 'lucide-react';
 const Promo: React.FC = () => {
   return (
     <section id="promo" className="py-20 bg-meren-dark text-white relative overflow-hidden">
-      <div className="container mx-auto px-4 md:px-8">
+      
+      {/* Context-Aware Animation: Ambient Blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div 
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.1, 0.2, 0.1],
+            x: [0, 50, 0],
+            y: [0, -30, 0]
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-20 -left-20 w-96 h-96 bg-meren-yellow rounded-full blur-[100px] opacity-10"
+        />
+        <motion.div 
+          animate={{ 
+            scale: [1, 1.3, 1],
+            opacity: [0.05, 0.1, 0.05],
+            x: [0, -40, 0],
+            y: [0, 40, 0]
+          }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-white rounded-full blur-[120px] opacity-5"
+        />
+      </div>
+
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
         <h2 className="font-display font-black text-4xl md:text-5xl text-white mb-12 uppercase">
             Акции
         </h2>

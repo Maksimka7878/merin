@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { REVIEWS } from '../constants';
 
@@ -15,8 +15,36 @@ const Reviews: React.FC = () => {
   };
 
   return (
-    <section id="reviews" className="py-20 bg-white">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="reviews" className="py-20 bg-white relative overflow-hidden">
+      
+      {/* Context-Aware Animation: Floating Quotes */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+           animate={{ 
+            y: [0, -20, 0],
+            rotate: [0, 5, 0],
+            opacity: [0.05, 0.1, 0.05]
+           }}
+           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+           className="absolute top-10 left-10 text-meren-dark opacity-5"
+        >
+          <Quote size={200} fill="currentColor" />
+        </motion.div>
+        
+        <motion.div
+           animate={{ 
+            y: [0, 20, 0],
+            rotate: [0, -5, 0],
+            opacity: [0.05, 0.08, 0.05]
+           }}
+           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+           className="absolute bottom-10 right-10 text-meren-yellow opacity-10"
+        >
+          <Quote size={150} fill="currentColor" className="transform scale-x-[-1]" />
+        </motion.div>
+      </div>
+
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -61,7 +89,7 @@ const Reviews: React.FC = () => {
           {REVIEWS.map((review) => (
             <motion.div 
               key={review.id}
-              className="min-w-[300px] md:min-w-[400px] bg-meren-gray p-8 rounded-2xl snap-center flex flex-col justify-between"
+              className="min-w-[300px] md:min-w-[400px] bg-meren-gray p-8 rounded-2xl snap-center flex flex-col justify-between hover:shadow-lg transition-shadow duration-300"
               whileHover={{ y: -5 }}
               transition={{ duration: 0.2 }}
             >
@@ -71,7 +99,7 @@ const Reviews: React.FC = () => {
                     <Star key={i} size={16} fill="currentColor" />
                   ))}
                 </div>
-                <p className="text-meren-dark text-lg font-medium leading-relaxed mb-6">
+                <p className="text-meren-dark text-lg font-medium leading-relaxed mb-6 relative">
                   "{review.text}"
                 </p>
               </div>

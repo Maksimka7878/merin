@@ -92,7 +92,7 @@ export const REVIEWS: Review[] = [
 ];
 
 export const CONTACTS = {
-  address: 'Санкт-Петербург, ул. Тележная 32',
+  address: 'Тележная 32',
   phone: '+79934783909',
   displayPhone: '+7 (993) 478-39-09',
   socials: {
