@@ -40,9 +40,9 @@ const About: React.FC = () => {
       id: 3,
       title: "Открыл КОФЕЙНЮ - сколько заработал за месяц?",
       views: "831 тыс. просмотров",
-      // Using the thumbnail from the link provided (same as video 2)
-      image: "https://img.youtube.com/vi/Y-GFGj9EsOQ/maxresdefault.jpg", 
-      link: "https://www.youtube.com/watch?v=Y-GFGj9EsOQ"
+      // Using the thumbnail from the new link provided
+      image: "https://img.youtube.com/vi/rwN6F6YYcYI/maxresdefault.jpg", 
+      link: "https://www.youtube.com/watch?v=rwN6F6YYcYI"
     }
   ]);
 

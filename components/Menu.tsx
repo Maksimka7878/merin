@@ -3,6 +3,31 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Milk, Droplets } from 'lucide-react';
 import { MENU_DATA, ADDONS } from '../constants';
 
+// Steam animation component moved outside for performance
+const Steam: React.FC = () => (
+  <motion.div 
+    className="absolute -top-8 left-0 right-0 flex justify-center gap-1.5 opacity-0 group-hover/price:opacity-100 transition-opacity duration-500 pointer-events-none"
+  >
+    {[1, 2, 3].map((i) => (
+      <motion.div
+        key={i}
+        className="w-0.5 h-4 bg-white/40 rounded-full blur-[2px]"
+        animate={{ 
+          y: [-2, -12],
+          opacity: [0, 0.6, 0],
+          scaleY: [0.5, 1.5, 0.5]
+        }}
+        transition={{ 
+          duration: 1.5 + i * 0.2, 
+          repeat: Infinity, 
+          delay: i * 0.3,
+          ease: "easeInOut"
+        }}
+      />
+    ))}
+  </motion.div>
+);
+
 const Menu: React.FC = () => {
   const [activeTab, setActiveTab] = useState(MENU_DATA[0].id);
   const activeCategory = MENU_DATA.find(cat => cat.id === activeTab);
@@ -34,37 +59,12 @@ const Menu: React.FC = () => {
     { d: "M0,50 Q100,150 200,50", delay: 1 }
   ];
 
-  // Steam animation component
-  const Steam: React.FC = () => (
-    <motion.div 
-      className="absolute -top-8 left-0 right-0 flex justify-center gap-1.5 opacity-0 group-hover/price:opacity-100 transition-opacity duration-500 pointer-events-none"
-    >
-      {[1, 2, 3].map((i) => (
-        <motion.div
-          key={i}
-          className="w-0.5 h-4 bg-white/40 rounded-full blur-[2px]"
-          animate={{ 
-            y: [-2, -12],
-            opacity: [0, 0.6, 0],
-            scaleY: [0.5, 1.5, 0.5]
-          }}
-          transition={{ 
-            duration: 1.5 + i * 0.2, 
-            repeat: Infinity, 
-            delay: i * 0.3,
-            ease: "easeInOut"
-          }}
-        />
-      ))}
-    </motion.div>
-  );
-
   return (
     <section id="menu" className="py-24 bg-meren-menu relative z-20 text-white min-h-[800px] overflow-hidden">
       
       {/* Background Texture (Animated) */}
       <div className="absolute top-0 right-0 w-full md:w-1/2 h-full opacity-10 pointer-events-none">
-          <svg viewBox="0 0 200 200" className="w-full h-full preserve-3d" preserveAspectRatio="none">
+          <svg viewBox="0 0 200 200" className="w-full h-full [transform-style:preserve-3d]" preserveAspectRatio="none">
              {bgLines.map((line, i) => (
                <motion.path 
                  key={i}
@@ -238,7 +238,7 @@ const Menu: React.FC = () => {
                 </AnimatePresence>
             </div>
             
-            {/* Addons Section - Redesigned */}
+            {/* Addons Section */}
              <div className="lg:col-span-3 mt-16">
                  <div className="flex flex-col items-center">
                     <div className="flex items-center gap-4 mb-8 opacity-60">

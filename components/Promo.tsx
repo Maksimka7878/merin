@@ -41,9 +41,9 @@ const TiltCard = ({ children, className }: { children?: React.ReactNode, classNa
         rotateX,
         transformStyle: "preserve-3d",
       }}
-      className={`perspective-1000 ${className}`}
+      className={`perspective-[1000px] ${className}`}
     >
-      <div className="h-full w-full transform-style-3d">
+      <div className="h-full w-full [transform-style:preserve-3d]">
          {children}
       </div>
     </motion.div>

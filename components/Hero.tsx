@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
       
       {/* Dynamic Animated Background */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <svg viewBox="0 0 1440 900" className="w-full h-full preserve-3d" preserveAspectRatio="xMidYMid slice">
+        <svg viewBox="0 0 1440 900" className="w-full h-full [transform-style:preserve-3d]" preserveAspectRatio="xMidYMid slice">
            {lines.map((line, i) => (
              <motion.path 
                key={i}
@@ -119,7 +119,7 @@ const Hero: React.FC = () => {
               whileHover={{ rotate: [-2, 2, -2], scale: 1.1 }}
               animate={{ rotate: -2 }}
             >
-               <p className="text-2xl md:text-4xl font-black text-meren-dark">
+               <p className="text-2xl md:text-4xl font-black text-meren-dark uppercase">
                  СКИДКА 20%
                </p>
             </motion.div>
