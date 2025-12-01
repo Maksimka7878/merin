@@ -23,14 +23,14 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
+    <nav className={`fixed w-full z-50 transition-all duration-500 ${
       scrolled || isOpen 
-        ? 'bg-white/90 backdrop-blur-md shadow-sm py-3 border-b border-gray-100' 
+        ? 'bg-white/80 backdrop-blur-xl shadow-sm py-3 border-b border-white/20' 
         : 'bg-transparent py-5'
     }`}>
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
         {/* Logo - Stacked Typography */}
-        <a href="#" className="flex flex-col items-start leading-[0.85] group select-none">
+        <a href="#" className="flex flex-col items-start leading-[0.8] group select-none hover:opacity-80 transition-opacity">
           <span className={`font-display font-black text-2xl tracking-tighter uppercase transition-colors duration-300 ${scrolled || isOpen ? 'text-meren-dark' : 'text-meren-dark'}`}>
             Meren
           </span>
@@ -54,7 +54,7 @@ const Navbar: React.FC = () => {
           ))}
           <a
             href={`tel:${CONTACTS.phone}`}
-            className="px-5 py-2.5 text-sm font-bold bg-meren-yellow text-meren-dark rounded-full hover:bg-meren-dark hover:text-white transition-all shadow-md"
+            className="px-6 py-2.5 text-sm font-bold bg-meren-yellow text-meren-dark rounded-full hover:bg-meren-dark hover:text-white transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
           >
             {CONTACTS.displayPhone}
           </a>
@@ -62,7 +62,7 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-meren-dark p-1"
+          className="md:hidden text-meren-dark p-2"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -71,23 +71,23 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile Menu Dropdown */}
-      <div className={`md:hidden absolute w-full bg-white border-t border-gray-100 transition-all duration-300 ease-in-out overflow-hidden shadow-xl ${
-        isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+      <div className={`md:hidden absolute w-full bg-white/95 backdrop-blur-xl border-t border-gray-100 transition-all duration-300 ease-in-out overflow-hidden shadow-xl ${
+        isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
       }`}>
-        <div className="flex flex-col px-4 py-6 space-y-4">
+        <div className="flex flex-col px-4 py-8 space-y-6 h-screen">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="text-2xl font-display font-bold text-meren-dark hover:text-meren-yellow"
+              className="text-3xl font-display font-black uppercase text-meren-dark hover:text-meren-yellow transition-colors"
             >
               {link.name}
             </a>
           ))}
            <a
             href={`tel:${CONTACTS.phone}`}
-            className="mt-4 w-full text-center py-4 font-bold bg-meren-yellow text-meren-dark rounded-xl"
+            className="mt-8 w-full text-center py-4 font-bold bg-meren-yellow text-meren-dark rounded-xl uppercase tracking-wider"
           >
             Позвонить
           </a>

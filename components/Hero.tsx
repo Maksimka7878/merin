@@ -4,7 +4,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Hero: React.FC = () => {
   const { scrollY } = useScroll();
-  // y1 was used for the student block, removed from usage below.
   const y2 = useTransform(scrollY, [0, 500], [0, -150]);
 
   // Line configuration for the background
@@ -107,7 +106,6 @@ const Hero: React.FC = () => {
           </motion.div>
 
           <motion.div 
-            // Removed parallax y1
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
@@ -156,11 +154,21 @@ const Hero: React.FC = () => {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-meren-dark/50"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-meren-dark"
+        animate={{ 
+          y: [0, 10, 0],
+          scale: [1, 1.1, 1] 
+        }}
+        transition={{ 
+          repeat: Infinity, 
+          duration: 1.5,
+          ease: "easeInOut"
+        }}
       >
-        <ArrowDown size={24} />
+        <div className="flex flex-col items-center gap-1 opacity-60">
+          <span className="text-[10px] font-bold uppercase tracking-widest">Scroll</span>
+          <ArrowDown size={24} />
+        </div>
       </motion.div>
     </section>
   );

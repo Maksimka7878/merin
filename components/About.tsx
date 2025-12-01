@@ -17,28 +17,32 @@ interface Video {
 }
 
 const About: React.FC = () => {
-  const [avatar, setAvatar] = useState("https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=200&auto=format&fit=crop");
+  // Default avatar (fallback until parsed) - Updated to user provided image
+  const [avatar, setAvatar] = useState("https://yt3.googleusercontent.com/b2G_TMhYGFtOon5BExgr8PdvJYAerTC2zR8GZ2SBATtUweOi92eGxFiaInwuvCK1mbxtdLbhChE=s160-c-k-c0x00ffffff-no-rj");
+  
+  // Updated thumbnails to match the actual YouTube videos from the links provided
   const [videos, setVideos] = useState<Video[]>([
     {
       id: 1,
       title: "КОФЕЙНЯ В УБЫТКАХ? Нужен ремонт! Сколько заработал?",
       views: "444 тыс. просмотров",
-      image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
-      link: "https://www.youtube.com/@IDEN"
+      image: "https://img.youtube.com/vi/vI3lUV6YEsw/maxresdefault.jpg",
+      link: "https://www.youtube.com/watch?v=vI3lUV6YEsw"
     },
     {
       id: 2,
       title: "Кофейня приносит деньги? Я в шоке!",
       views: "752 тыс. просмотров",
-      image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop",
-      link: "https://www.youtube.com/@IDEN"
+      image: "https://img.youtube.com/vi/Y-GFGj9EsOQ/maxresdefault.jpg",
+      link: "https://www.youtube.com/watch?v=Y-GFGj9EsOQ"
     },
     {
       id: 3,
       title: "Открыл КОФЕЙНЮ - сколько заработал за месяц?",
       views: "831 тыс. просмотров",
-      image: "https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800&auto=format&fit=crop",
-      link: "https://www.youtube.com/@IDEN"
+      // Using the thumbnail from the link provided (same as video 2)
+      image: "https://img.youtube.com/vi/Y-GFGj9EsOQ/maxresdefault.jpg", 
+      link: "https://www.youtube.com/watch?v=Y-GFGj9EsOQ"
     }
   ]);
 
@@ -147,7 +151,7 @@ const About: React.FC = () => {
                       className="w-full h-full object-cover" 
                       onError={(e) => {
                         // Fallback if dynamic avatar fails to load
-                        (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=200&auto=format&fit=crop";
+                        (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop";
                       }}
                     />
                 </div>
@@ -156,7 +160,7 @@ const About: React.FC = () => {
                         <span className="font-display font-bold text-3xl md:text-4xl uppercase tracking-wide group-hover:text-meren-accent transition-colors">АЙДЕН</span>
                         <BadgeCheck className="text-black fill-black text-white" size={28} strokeWidth={3} /> 
                     </a>
-                    <span className="text-2xl md:text-3xl font-medium text-meren-dark leading-none mt-1">1,09 млн</span>
+                    <span className="text-2xl md:text-3xl font-medium text-meren-dark leading-none mt-1">1.1 млн</span>
                 </div>
             </motion.div>
         </div>
@@ -182,7 +186,7 @@ const About: React.FC = () => {
                            alt={video.title} 
                            className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-500" 
                            onError={(e) => {
-                              // Fallback thumbnail
+                              // Fallback thumbnail if YouTube maxres is missing
                               (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=800&auto=format&fit=crop";
                            }}
                          />

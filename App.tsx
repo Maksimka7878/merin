@@ -7,10 +7,16 @@ import Reviews from './components/Reviews';
 import About from './components/About';
 import Contacts from './components/Contacts';
 import Footer from './components/Footer';
+import CustomCursor from './components/CustomCursor';
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white relative cursor-none">
+      {/* Global Noise Texture */}
+      <div className="bg-noise"></div>
+      
+      <CustomCursor />
+      
       <Navbar />
       <main className="flex-grow">
         <Hero />
